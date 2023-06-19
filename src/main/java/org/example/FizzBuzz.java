@@ -5,18 +5,18 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 
 public class FizzBuzz {
-    final private int N;
+    private int n;
     private BlockingQueue<String> queue;
     private int current;
 
     public FizzBuzz(int n){
-        this.N = n;
+        this.n = n;
         this.queue = new LinkedBlockingQueue<>();
         this.current = 1;
     }
 
     public synchronized void fizz() {
-        while (current <= N) {
+        while (current <= n) {
             if (current % 3 == 0 && current % 5 != 0) {
                 queue.add("fizz");
                 current++;
@@ -32,7 +32,7 @@ public class FizzBuzz {
     }
 
     public synchronized void buzz() {
-        while (current <= N) {
+        while (current <= n) {
             if (current % 5 == 0 && current % 3 != 0) {
                 queue.add("buzz");
                 current++;
@@ -49,7 +49,7 @@ public class FizzBuzz {
 
 
     public synchronized void fizzBuzz(){
-        while(current <= N) {
+        while(current <= 0) {
             if (current % 5 == 0 && current % 3 == 0){
                 queue.add("fizzbuzz");
                 current++;
@@ -65,7 +65,7 @@ public class FizzBuzz {
     }
 
     public synchronized void numberAndPrint(){
-        while (current <= N){
+        while (current <= n){
             if (current % 3 != 0 && current % 5 != 0){
                 queue.add(String.valueOf(current));
                 current++;
@@ -76,11 +76,8 @@ public class FizzBuzz {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
-
-                System.out.println(queue.poll());
-
+            System.out.println(queue.poll());
         }
 
     }
